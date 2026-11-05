@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Goo’Imsouane – Stay, surf and explore Imsouane</title>
+<meta name="description" content="Book stays, surf lessons and gear from local hosts in Imsouane, Morocco.">
+<style>
+:root{--navy:#0b3a5b;--navy2:#0f4a73;--lime:#9ad41c;--sun:#f5d130;--bg:#f3f7f9;--card:#fff;--ink:#0d2233;--mute:#58707f;--line:#dbe5ea}
+@media (prefers-color-scheme:dark){:root{--bg:#071a28;--card:#0d2b42;--ink:#eaf3f8;--mute:#9bb4c3;--line:#1a415e}}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.4 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.app{max-width:480px;margin:0 auto;min-height:100vh;padding-bottom:40px}
+.top{background:var(--navy);color:#fff;padding:calc(18px + env(safe-area-inset-top)) 20px 60px;position:relative;overflow:hidden}
+.mark{position:relative;width:54px;height:34px;display:inline-block;vertical-align:middle;margin-right:10px}
+.mark i{position:absolute;top:0;width:34px;height:34px;border-radius:50%;border:7px solid #fff}
+.mark i+i{left:20px;border-color:var(--lime)}
+.brand{font-weight:800;font-size:19px}.brand em{font-style:italic;color:var(--sun);font-weight:600;margin-left:2px}
+h1{font-size:30px;line-height:1.1;margin:24px 0 8px;letter-spacing:-.6px;max-width:320px}
+.top p{margin:0;color:#bcd5e6;max-width:320px}
+.wave{position:absolute;left:0;right:0;bottom:-1px;height:34px;width:100%}.wave path{fill:var(--bg)}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:4px 20px 12px;scrollbar-width:none}
+.chip{flex:none;border:1.5px solid var(--line);background:var(--card);color:var(--ink);padding:9px 15px;border-radius:99px;font:inherit;font-weight:700;font-size:14px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:#fff}
+.how{margin:4px 20px 8px;padding:14px;border-radius:16px;background:var(--card);border:1px solid var(--line);font-size:14px;color:var(--mute)}
+.how b{color:var(--ink)}
+.list{padding:6px 20px}
+.card{display:block;width:100%;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;margin-bottom:14px;padding:0;font:inherit;color:inherit;cursor:pointer}
+.cover{height:170px;background:linear-gradient(160deg,#6ad0e8,#1b78b3) center/cover;display:grid;place-items:center;font-size:44px}
+.card .b{padding:12px 14px 14px}
+.card h3{margin:0 0 2px;font-size:17px}.card small{color:var(--mute)}
+.price{font-weight:800;font-size:18px;margin-top:8px}.price em{font-style:normal;font-weight:500;color:var(--mute);font-size:13px}
+.empty{text-align:center;color:var(--mute);padding:40px 20px}
+.scrim{position:fixed;inset:0;background:rgba(3,15,25,.6);display:none;z-index:20}.scrim.on{display:block}
+.sheet{position:fixed;left:50%;bottom:0;transform:translate(-50%,100%);width:100%;max-width:480px;background:var(--card);border-radius:24px 24px 0 0;z-index:30;transition:transform .28s;max-height:92vh;overflow:auto;padding-bottom:env(safe-area-inset-bottom)}
+.sheet.on{transform:translate(-50%,0)}
+.gal{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:0}
+.gal div{flex:none;width:100%;height:230px;scroll-snap-align:start;background:center/cover #1b78b3}
+.in{padding:16px 20px 20px}
+.in h2{margin:0 0 4px;font-size:22px;letter-spacing:-.3px}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}.tags span{background:var(--bg);border:1px solid var(--line);border-radius:99px;padding:4px 10px;font-size:13px}
+label{display:block;font-weight:600;font-size:14px;margin:12px 0 4px}
+input,select{width:100%;padding:11px;border:1.5px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.sum{background:var(--bg);border-radius:14px;padding:12px 14px;margin:14px 0}
+.sum div{display:flex;justify-content:space-between;padding:3px 0;font-size:15px}
+.sum .now{font-weight:800;border-top:1px dashed var(--line);margin-top:6px;padding-top:8px}
+.btn{width:100%;border:0;border-radius:14px;background:var(--lime);color:#0b2a12;font:inherit;font-weight:800;padding:14px;cursor:pointer}
+.btn:disabled{opacity:.6}
+.fine{font-size:12.5px;color:var(--mute);margin:10px 0 0}
+.err{color:#c0392b;font-size:14px;margin-top:8px}
+.x{position:absolute;top:10px;right:12px;width:36px;height:36px;border-radius:50%;border:0;background:rgba(0,0,0,.55);color:#fff;font-size:20px;z-index:2;cursor:pointer}
+.ok{text-align:center;padding:30px 20px}.ok .t{width:64px;height:64px;border-radius:50%;background:var(--lime);color:#0b2a12;display:grid;place-items:center;margin:0 auto 12px;font-size:32px}
+.code{font-size:30px;font-weight:800;color:var(--navy);letter-spacing:1px}
+@media (prefers-color-scheme:dark){.code{color:var(--sun)}}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <div><span class="mark" aria-hidden="true"><i></i><i></i></span><span class="brand">Goo’<em>imsouane</em></span></div>
+    <h1>Stay, surf and get around Imsouane.</h1>
+    <p>Book with local hosts. Pay 10% to confirm, the rest on arrival.</p>
+    <svg class="wave" viewBox="0 0 430 34" preserveAspectRatio="none" aria-hidden="true"><path d="M0 18 C60 0 120 34 190 18 S320 0 430 20 V34 H0Z"/></svg>
+  </header>
+  <div class="chips" id="chips" role="group" aria-label="Categories"></div>
+  <div class="how"><b>How it works:</b> send a request, the host confirms, you pay a 10% deposit, and settle the other 90% directly with the host when you arrive.</div>
+  <div class="list" id="list"><div class="empty">Loading…</div></div>
+</div>
+<div class="scrim" id="scrim"></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Listing"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script>
+const URL_="https://ngjechhcbgfmwjndotzd.supabase.co";
+const sb=supabase.createClient(URL_,"sb_publishable_TQFopyBTIb0Vtl2Ua7boPA_UErNNhv9");
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const LABEL={stay:"Stay",surf:"Surf",food:"Food",transport:"Transport",outdoor:"Outdoor",bundle:"Bundles"};
+const ICON={stay:"🛏️",surf:"🏄",food:"🍽️",transport:"🚐",outdoor:"🐪",bundle:"🌴"};
+const UNIT={night:"night",person:"person",day:"day",trip:"trip"};
+const QTY={night:"Nights",person:"Guests",day:"Days",trip:"Guests"};
+const mad=v=>v.toLocaleString("en-US")+" MAD";
+const photo=p=>`${URL_}/storage/v1/object/public/listing-photos/${p}`;
+let all=[],cat="all",cur=null,n=1;
+
+async function load(){
+  const {data,error}=await sb.from("listings").select("*,vendors(name,area),listing_photos(path,position)").eq("status","active").order("created_at",{ascending:false});
+  if(error){$("#list").innerHTML=`<div class="empty">Could not load listings. Please try again.</div>`;return}
+  all=(data||[]).map(l=>({...l,listing_photos:(l.listing_photos||[]).sort((a,b)=>a.position-b.position)}));
+  chips();render();
+}
+function chips(){
+  const cats=["all",...new Set(all.map(l=>l.category))];
+  $("#chips").innerHTML=cats.map(k=>`<button class="chip" data-k="${k}" aria-pressed="${k===cat}">${k==="all"?"All":LABEL[k]}</button>`).join("");
+}
+function render(){
+  const items=all.filter(l=>cat==="all"||l.category===cat);
+  $("#list").innerHTML=items.length?items.map(l=>{
+    const c=l.listing_photos[0];
+    return `<button class="card" data-id="${l.id}"><div class="cover" ${c?`style="background-image:url('${photo(c.path)}')"`:""}>${c?"":ICON[l.category]}</div>
+    <div class="b"><h3>${esc(l.title)}</h3><small>${esc(l.vendors?.name)}${l.vendors?.area?" · "+esc(l.vendors.area):""}</small>
+    <div class="price">${mad(l.price_mad)} <em>/ ${UNIT[l.price_unit]}</em></div></div></button>`}).join(""):`<div class="empty">No listings yet. Check back soon.</div>`;
+}
+function open(id){
+  cur=all.find(l=>l.id===id);n=1;
+  const d=new Date();d.setDate(d.getDate()+3);
+  const gal=cur.listing_photos.length?`<div class="gal">${cur.listing_photos.map(p=>`<div style="background-image:url('${photo(p.path)}')"></div>`).join("")}</div>`:`<div class="gal"><div style="display:grid;place-items:center;font-size:60px">${ICON[cur.category]}</div></div>`;
+  $("#sheet").innerHTML=`<button class="x" id="close" aria-label="Close">×</button>${gal}<div class="in">
+   <h2>${esc(cur.title)}</h2><small style="color:var(--mute)">${esc(cur.vendors?.name)}${cur.vendors?.area?" · "+esc(cur.vendors.area):""}</small>
+   ${cur.description?`<p>${esc(cur.description)}</p>`:""}
+   ${(cur.includes||[]).length?`<div class="tags">${cur.includes.map(i=>`<span>${esc(i)}</span>`).join("")}</div>`:""}
+   <div class="two"><div><label for="dt">${cur.category==="stay"?"Check-in":"Date"}</label><input id="dt" type="date" min="${new Date().toISOString().slice(0,10)}" value="${d.toISOString().slice(0,10)}"></div>
+   <div><label for="qt">${QTY[cur.price_unit]}</label><select id="qt">${Array.from({length:cur.max_quantity},(_,i)=>`<option>${i+1}</option>`).join("")}</select></div></div>
+   <label for="gn">Your name</label><input id="gn" autocomplete="name">
+   <label for="ge">Email</label><input id="ge" type="email" autocomplete="email">
+   <div class="two"><div><label for="gw">WhatsApp</label><input id="gw" placeholder="+33..." autocomplete="tel"></div><div><label for="gc">Country</label><input id="gc" autocomplete="country-name"></div></div>
+   <div class="sum" id="sum"></div>
+   <button class="btn" id="send">Send booking request</button><div class="err" id="err"></div>
+   <p class="fine">No payment now. The host confirms first, then you receive the 10% deposit link.</p></div>`;
+  calc();$("#sheet").classList.add("on");$("#scrim").classList.add("on");
+}
+function calc(){
+  n=parseInt($("#qt").value,10)||1;const t=cur.price_mad*n,d=Math.round(t*.1);
+  $("#sum").innerHTML=`<div><span>${mad(cur.price_mad)} × ${n}</span><span>${mad(t)}</span></div><div><span>Pay on arrival (90%)</span><span>${mad(t-d)}</span></div><div class="now"><span>Deposit to confirm (10%)</span><span>${mad(d)}</span></div>`;
+}
+function close(){$("#sheet").classList.remove("on");$("#scrim").classList.remove("on")}
+async function send(){
+  const name=$("#gn").value.trim(),email=$("#ge").value.trim(),err=$("#err");
+  if(!name||!/^\S+@\S+\.\S+$/.test(email)){err.textContent="Please enter your name and a valid email.";return}
+  const btn=$("#send");btn.disabled=true;err.textContent="";
+  const code="GI-"+Math.random().toString(36).slice(2,7).toUpperCase();
+  const {error}=await sb.from("bookings").insert({code,listing_id:cur.id,vendor_id:cur.vendor_id,guest_name:name,guest_email:email,guest_whatsapp:$("#gw").value.trim()||null,guest_country:$("#gc").value.trim()||null,start_date:$("#dt").value,quantity:n,total_mad:0,deposit_mad:0,balance_mad:0});
+  if(error){btn.disabled=false;err.textContent="Something went wrong. Please try again.";return}
+  $("#sheet").innerHTML=`<div class="ok"><div class="t">✓</div><h2>Request sent</h2><div class="code">${code}</div>
+   <p>${esc(cur.vendors?.name)} will confirm your booking soon. We’ll email you at ${esc(email)} with the next step.</p><button class="btn" id="close">Close</button></div>`;
+}
+document.addEventListener("click",e=>{
+  const k=e.target.closest("[data-k]");if(k){cat=k.dataset.k;chips();render();return}
+  const c=e.target.closest(".card");if(c){open(c.dataset.id);return}
+  if(e.target.id==="close"||e.target.id==="scrim")close();
+  if(e.target.id==="send")send();
+});
+document.addEventListener("change",e=>{if(e.target.id==="qt")calc()});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")close()});
+load();
+</script>
+</body>
+</html>
